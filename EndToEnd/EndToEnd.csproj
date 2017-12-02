@@ -177,11 +177,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\BydloesController.cs" />
-    <Compile Include="Controllers\GesController.cs" />
+    <Compile Include="Controllers\BydloController.cs" />
+    <Compile Include="Controllers\DrobController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\TrzodasController.cs" />
+    <Compile Include="Controllers\TrzodaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,22 +189,26 @@
     <Compile Include="Migrations\201603060146350_InitialCreate.Designer.cs">
       <DependentUpon>201603060146350_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711291513066_Produkty.cs" />
-    <Compile Include="Migrations\201711291513066_Produkty.Designer.cs">
-      <DependentUpon>201711291513066_Produkty.cs</DependentUpon>
+    <Compile Include="Migrations\201712021042285_Produkty.cs" />
+    <Compile Include="Migrations\201712021042285_Produkty.Designer.cs">
+      <DependentUpon>201712021042285_Produkty.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711291523166_Produkty2.cs" />
-    <Compile Include="Migrations\201711291523166_Produkty2.Designer.cs">
-      <DependentUpon>201711291523166_Produkty2.cs</DependentUpon>
+    <Compile Include="Migrations\201712021110508_Produkty2.cs" />
+    <Compile Include="Migrations\201712021110508_Produkty2.Designer.cs">
+      <DependentUpon>201712021110508_Produkty2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712021123454_Produkty3.cs" />
+    <Compile Include="Migrations\201712021123454_Produkty3.Designer.cs">
+      <DependentUpon>201712021123454_Produkty3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Bydlo.cs" />
+    <Compile Include="Models\BydloModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\Ges.cs" />
+    <Compile Include="Models\DrobModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Trzoda.cs" />
+    <Compile Include="Models\TrzodaModels.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -273,31 +277,34 @@
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\EditRoles.cshtml" />
-    <Content Include="Views\Ges\Create.cshtml" />
-    <Content Include="Views\Ges\Delete.cshtml" />
-    <Content Include="Views\Ges\Details.cshtml" />
-    <Content Include="Views\Ges\Edit.cshtml" />
-    <Content Include="Views\Ges\Index.cshtml" />
-    <Content Include="Views\Bydloes\Create.cshtml" />
-    <Content Include="Views\Bydloes\Delete.cshtml" />
-    <Content Include="Views\Bydloes\Details.cshtml" />
-    <Content Include="Views\Bydloes\Edit.cshtml" />
-    <Content Include="Views\Bydloes\Index.cshtml" />
-    <Content Include="Views\Trzodas\Create.cshtml" />
-    <Content Include="Views\Trzodas\Delete.cshtml" />
-    <Content Include="Views\Trzodas\Details.cshtml" />
-    <Content Include="Views\Trzodas\Edit.cshtml" />
-    <Content Include="Views\Trzodas\Index.cshtml" />
+    <Content Include="Views\Trzoda\Create.cshtml" />
+    <Content Include="Views\Trzoda\Delete.cshtml" />
+    <Content Include="Views\Trzoda\Details.cshtml" />
+    <Content Include="Views\Trzoda\Edit.cshtml" />
+    <Content Include="Views\Trzoda\Index.cshtml" />
+    <Content Include="Views\Drob\Create.cshtml" />
+    <Content Include="Views\Drob\Delete.cshtml" />
+    <Content Include="Views\Drob\Details.cshtml" />
+    <Content Include="Views\Drob\Edit.cshtml" />
+    <Content Include="Views\Drob\Index.cshtml" />
+    <Content Include="Views\Bydlo\Create.cshtml" />
+    <Content Include="Views\Bydlo\Delete.cshtml" />
+    <Content Include="Views\Bydlo\Details.cshtml" />
+    <Content Include="Views\Bydlo\Edit.cshtml" />
+    <Content Include="Views\Bydlo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603060146350_InitialCreate.resx">
       <DependentUpon>201603060146350_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711291513066_Produkty.resx">
-      <DependentUpon>201711291513066_Produkty.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712021042285_Produkty.resx">
+      <DependentUpon>201712021042285_Produkty.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711291523166_Produkty2.resx">
-      <DependentUpon>201711291523166_Produkty2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712021110508_Produkty2.resx">
+      <DependentUpon>201712021110508_Produkty2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712021123454_Produkty3.resx">
+      <DependentUpon>201712021123454_Produkty3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

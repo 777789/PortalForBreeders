@@ -1,0 +1,144 @@
+﻿@model EndToEnd.Models.DrobModels
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DrobModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Wiek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wiek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pasza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pasza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bialko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bialko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Energia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Energia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oleje_i_tluszcze)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oleje_i_tluszcze)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wlokno_surowe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wlokno_surowe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Popiol_surowy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Popiol_surowy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wapn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wapn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fosfor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fosfor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lizyna)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lizyna)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Metionina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Metionina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treonina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treonina)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

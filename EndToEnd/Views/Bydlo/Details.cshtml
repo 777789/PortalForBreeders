@@ -1,0 +1,106 @@
+﻿@model EndToEnd.Models.BydloModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BydloModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Wiek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wiek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Typ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Typ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pasza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pasza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bialko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bialko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Energia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Energia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oleje_I_Tluszcze)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oleje_I_Tluszcze)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wapn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wapn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fosfor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fosfor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sod)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

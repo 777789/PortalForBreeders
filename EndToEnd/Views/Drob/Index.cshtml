@@ -1,0 +1,117 @@
+﻿@model IEnumerable<EndToEnd.Models.DrobModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Wiek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pasza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bialko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Energia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Oleje_i_tluszcze)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wlokno_surowe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Popiol_surowy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wapn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fosfor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lizyna)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Metionina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Treonina)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wiek)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pasza)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bialko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Energia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Oleje_i_tluszcze)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wlokno_surowe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Popiol_surowy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wapn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fosfor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lizyna)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Metionina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Treonina)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

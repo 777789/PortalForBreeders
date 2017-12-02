@@ -20,8 +20,8 @@ namespace EndToEnd.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Bydlo> BydloProducts { get; set; }
-        public DbSet<Trzoda> TrzodaProducts { get; set; }
-        public DbSet<Ges> GesProducts { get; set; } 
+        public DbSet<BydloModels> BydloProducts { get; set; }
+        public DbSet<TrzodaModels> TrzodaProducts { get; set; }
+        public DbSet<DrobModels> DrobProducts { get; set; } 
     }
 }
