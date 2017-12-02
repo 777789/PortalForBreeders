@@ -15,8 +15,29 @@ namespace EndToEnd.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Bydloes
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_asc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            
+            var BydloProducts = from s in db.BydloProducts
+                           select s;
+            switch (sortOrder)
+            {
+                case "name_asc":
+                    BydloProducts = db.BydloProducts.OrderByDescending(s => s.Nazwa);
+                    break;
+                case "Date":
+                    BydloProducts = db.BydloProducts.OrderBy(s => s.Oleje_I_tluszcze);
+                    break;
+                case "date_desc":
+                    BydloProducts = db.BydloProducts.OrderByDescending(s => s.Energia);
+                    break;
+                default:
+                    BydloProducts = db.BydloProducts.OrderBy(s => s.wapn);
+                    break;
+            }
+            
             return View(db.BydloProducts.ToList());
         }
 
@@ -36,6 +57,7 @@ namespace EndToEnd.Controllers
         }
 
         // GET: Bydloes/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +67,7 @@ namespace EndToEnd.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Nazwa,Bialko_ogolne,Energia,Oleje_I_tluszcze,wapn,fosfor,sod,witamina_a,witamina_d3,witamina_c,witamina_e")] Bydlo bydlo)
         {
@@ -59,6 +82,7 @@ namespace EndToEnd.Controllers
         }
 
         // GET: Bydloes/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +102,7 @@ namespace EndToEnd.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "ID,Nazwa,Bialko_ogolne,Energia,Oleje_I_tluszcze,wapn,fosfor,sod,witamina_a,witamina_d3,witamina_c,witamina_e")] Bydlo bydlo)
         {
             if (ModelState.IsValid)
@@ -90,6 +115,7 @@ namespace EndToEnd.Controllers
         }
 
         // GET: Bydloes/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,6 +131,7 @@ namespace EndToEnd.Controllers
         }
 
         // POST: Bydloes/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

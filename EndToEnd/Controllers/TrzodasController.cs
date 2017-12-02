@@ -36,6 +36,7 @@ namespace EndToEnd.Controllers
         }
 
         // GET: Trzodas/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +47,7 @@ namespace EndToEnd.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Id,Name,Bialko_ogolne,Energia,Oleje_i_tluszcze,wlokno_surowe,popiol_surowy,wapn,fosfor,sod,magnez,lizyna,metionina,treonina,arginina,witamina_a,witamina_d3,witamina_e")] Trzoda trzoda)
         {
             if (ModelState.IsValid)
@@ -59,6 +61,7 @@ namespace EndToEnd.Controllers
         }
 
         // GET: Trzodas/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +81,7 @@ namespace EndToEnd.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Id,Name,Bialko_ogolne,Energia,Oleje_i_tluszcze,wlokno_surowe,popiol_surowy,wapn,fosfor,sod,magnez,lizyna,metionina,treonina,arginina,witamina_a,witamina_d3,witamina_e")] Trzoda trzoda)
         {
             if (ModelState.IsValid)
@@ -90,6 +94,7 @@ namespace EndToEnd.Controllers
         }
 
         // GET: Trzodas/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,6 +110,7 @@ namespace EndToEnd.Controllers
         }
 
         // POST: Trzodas/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EndToEnd.Models.Bydlo>
+﻿@using EndToEnd.Controllers
+@model IEnumerable<EndToEnd.Models.Bydlo>
 
 @{
     ViewBag.Title = "Index";
@@ -9,10 +10,10 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-hover table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nazwa)
+            @Html.ActionLink("Nazwa", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Bialko_ogolne)

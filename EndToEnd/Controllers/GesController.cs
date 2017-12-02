@@ -36,6 +36,7 @@ namespace EndToEnd.Controllers
         }
 
         // GET: Ges/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +47,7 @@ namespace EndToEnd.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Id,Name,Bialko_ogolne,Energia,Oleje_i_tluszcze,wlokno_surowe,popiol_surowy,wapn,fosfor_przyswajalny,sod,lizyna,metionina,treonina,tryptofan,witamina_a,witamina_d3,witamina_e")] Ges ges)
         {
             if (ModelState.IsValid)
@@ -78,6 +80,7 @@ namespace EndToEnd.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Id,Name,Bialko_ogolne,Energia,Oleje_i_tluszcze,wlokno_surowe,popiol_surowy,wapn,fosfor_przyswajalny,sod,lizyna,metionina,treonina,tryptofan,witamina_a,witamina_d3,witamina_e")] Ges ges)
         {
             if (ModelState.IsValid)
@@ -90,6 +93,7 @@ namespace EndToEnd.Controllers
         }
 
         // GET: Ges/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -103,9 +107,9 @@ namespace EndToEnd.Controllers
             }
             return View(ges);
         }
-
         // POST: Ges/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

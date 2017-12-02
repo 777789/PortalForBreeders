@@ -205,7 +205,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Trzoda.cs" />
-    <Compile Include="Models\TrzodaController.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
