@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EndToEnd.Models.DrobModels>
+﻿@model IEnumerable<EndToEnd.Models.KuraModels>
 
 @{
     ViewBag.Title = "Index";
@@ -30,13 +30,7 @@
             @Html.DisplayNameFor(model => model.Energia)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Oleje_i_tluszcze)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Wlokno_surowe)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Popiol_surowy)
+            @Html.DisplayNameFor(model => model.Oleje)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Wapn)
@@ -80,13 +74,7 @@
             @Html.DisplayFor(modelItem => item.Energia)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Oleje_i_tluszcze)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Wlokno_surowe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Popiol_surowy)
+            @Html.DisplayFor(modelItem => item.Oleje)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Wapn)

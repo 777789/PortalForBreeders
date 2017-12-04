@@ -1,14 +1,13 @@
-﻿@model EndToEnd.Models.DrobModels
+﻿@model EndToEnd.Models.KuraModels
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Details";
 }
 
-<h2>Delete</h2>
+<h2>Details</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>DrobModels</h4>
+    <h4>KuraModels</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -60,27 +59,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Oleje_i_tluszcze)
+            @Html.DisplayNameFor(model => model.Oleje)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Oleje_i_tluszcze)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Wlokno_surowe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Wlokno_surowe)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Popiol_surowy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Popiol_surowy)
+            @Html.DisplayFor(model => model.Oleje)
         </dd>
 
         <dt>
@@ -132,13 +115,8 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

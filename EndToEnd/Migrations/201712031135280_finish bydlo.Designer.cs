@@ -7,13 +7,13 @@ namespace EndToEnd.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Produkty3 : IMigrationMetadata
+    public sealed partial class finishbydlo : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Produkty3));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(finishbydlo));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712021123454_Produkty3"; }
+            get { return "201712031135280_finish bydlo"; }
         }
         
         string IMigrationMetadata.Source

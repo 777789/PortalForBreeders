@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 
 namespace EndToEnd.Models
 {
@@ -20,5 +21,7 @@ namespace EndToEnd.Models
         public float Wapn {get; set;}
         public float Fosfor {get; set;}
         public float Sod { get; set; }
+        public SortDirection SortDirection { get; internal set; }
+        public string SortExpression { get; internal set; }
     }
 }

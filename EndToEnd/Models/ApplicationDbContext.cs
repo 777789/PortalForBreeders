@@ -22,6 +22,10 @@ namespace EndToEnd.Models
 
         public DbSet<BydloModels> BydloProducts { get; set; }
         public DbSet<TrzodaModels> TrzodaProducts { get; set; }
-        public DbSet<DrobModels> DrobProducts { get; set; } 
+        public DbSet<KuraModels> DrobProducts { get; set; } 
+        public DbSet<KaczkaModels> KaczkaProducts { get; set; }
+        public DbSet<GesModels> GesProducts { get; set; }
+        public DbSet<IndykModels> IndykProducts { get; set; }
+
     }
 }

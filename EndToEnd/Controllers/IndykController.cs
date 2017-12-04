@@ -10,107 +10,107 @@ using EndToEnd.Models;
 
 namespace EndToEnd.Controllers
 {
-    public class TrzodaController : Controller
+    public class IndykController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Trzoda
+        // GET: Indyk
         public ActionResult Index()
         {
-            return View(db.TrzodaProducts.ToList());
+            return View(db.IndykProducts.ToList());
         }
 
-        // GET: Trzoda/Details/5
+        // GET: Indyk/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrzodaModels trzodaModels = db.TrzodaProducts.Find(id);
-            if (trzodaModels == null)
+            IndykModels indykModels = db.IndykProducts.Find(id);
+            if (indykModels == null)
             {
                 return HttpNotFound();
             }
-            return View(trzodaModels);
+            return View(indykModels);
         }
 
-        // GET: Trzoda/Create
+        // GET: Indyk/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Trzoda/Create
+        // POST: Indyk/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Wiek,Pasza,Producent,Cena,Bialko,Energia,Tluszcze,Wapn,Fosfor,Sod,Magnez,Lizyna,Metionina,Treonina,Arginina")] TrzodaModels trzodaModels)
+        public ActionResult Create([Bind(Include = "Id,Wiek,Pasza,Producent,Cena,Bialko,Energia,Oleje,Wapn,Fosfor,Sod,Lizyna,Metionina,Treonina")] IndykModels indykModels)
         {
             if (ModelState.IsValid)
             {
-                db.TrzodaProducts.Add(trzodaModels);
+                db.IndykProducts.Add(indykModels);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(trzodaModels);
+            return View(indykModels);
         }
 
-        // GET: Trzoda/Edit/5
+        // GET: Indyk/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrzodaModels trzodaModels = db.TrzodaProducts.Find(id);
-            if (trzodaModels == null)
+            IndykModels indykModels = db.IndykProducts.Find(id);
+            if (indykModels == null)
             {
                 return HttpNotFound();
             }
-            return View(trzodaModels);
+            return View(indykModels);
         }
 
-        // POST: Trzoda/Edit/5
+        // POST: Indyk/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Wiek,Pasza,Producent,Cena,Bialko,Energia,Tluszcze,Wapn,Fosfor,Sod,Magnez,Lizyna,Metionina,Treonina,Arginina")] TrzodaModels trzodaModels)
+        public ActionResult Edit([Bind(Include = "Id,Wiek,Pasza,Producent,Cena,Bialko,Energia,Oleje,Wapn,Fosfor,Sod,Lizyna,Metionina,Treonina")] IndykModels indykModels)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(trzodaModels).State = EntityState.Modified;
+                db.Entry(indykModels).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(trzodaModels);
+            return View(indykModels);
         }
 
-        // GET: Trzoda/Delete/5
+        // GET: Indyk/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrzodaModels trzodaModels = db.TrzodaProducts.Find(id);
-            if (trzodaModels == null)
+            IndykModels indykModels = db.IndykProducts.Find(id);
+            if (indykModels == null)
             {
                 return HttpNotFound();
             }
-            return View(trzodaModels);
+            return View(indykModels);
         }
 
-        // POST: Trzoda/Delete/5
+        // POST: Indyk/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TrzodaModels trzodaModels = db.TrzodaProducts.Find(id);
-            db.TrzodaProducts.Remove(trzodaModels);
+            IndykModels indykModels = db.IndykProducts.Find(id);
+            db.IndykProducts.Remove(indykModels);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -178,8 +178,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BydloController.cs" />
-    <Compile Include="Controllers\DrobController.cs" />
+    <Compile Include="Controllers\DrobTypController.cs" />
+    <Compile Include="Controllers\GesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndykController.cs" />
+    <Compile Include="Controllers\KaczkaController.cs" />
+    <Compile Include="Controllers\KuraController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TrzodaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -189,23 +193,27 @@
     <Compile Include="Migrations\201603060146350_InitialCreate.Designer.cs">
       <DependentUpon>201603060146350_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712021042285_Produkty.cs" />
-    <Compile Include="Migrations\201712021042285_Produkty.Designer.cs">
-      <DependentUpon>201712021042285_Produkty.cs</DependentUpon>
+    <Compile Include="Migrations\201712031130415_2.cs" />
+    <Compile Include="Migrations\201712031130415_2.Designer.cs">
+      <DependentUpon>201712031130415_2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712021110508_Produkty2.cs" />
-    <Compile Include="Migrations\201712021110508_Produkty2.Designer.cs">
-      <DependentUpon>201712021110508_Produkty2.cs</DependentUpon>
+    <Compile Include="Migrations\201712031135280_finish bydlo.cs" />
+    <Compile Include="Migrations\201712031135280_finish bydlo.Designer.cs">
+      <DependentUpon>201712031135280_finish bydlo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712021123454_Produkty3.cs" />
-    <Compile Include="Migrations\201712021123454_Produkty3.Designer.cs">
-      <DependentUpon>201712021123454_Produkty3.cs</DependentUpon>
+    <Compile Include="Migrations\201712041556563_contact.cs" />
+    <Compile Include="Migrations\201712041556563_contact.Designer.cs">
+      <DependentUpon>201712041556563_contact.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BydloModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\DrobModels.cs" />
+    <Compile Include="Models\IndykModels.cs" />
+    <Compile Include="Models\GesModels.cs" />
+    <Compile Include="Models\KaczkaModels.cs" />
+    <Compile Include="Models\KuraModels.cs" />
+    <Compile Include="Models\DrobTyp.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TrzodaModels.cs" />
@@ -282,11 +290,32 @@
     <Content Include="Views\Trzoda\Details.cshtml" />
     <Content Include="Views\Trzoda\Edit.cshtml" />
     <Content Include="Views\Trzoda\Index.cshtml" />
-    <Content Include="Views\Drob\Create.cshtml" />
-    <Content Include="Views\Drob\Delete.cshtml" />
-    <Content Include="Views\Drob\Details.cshtml" />
-    <Content Include="Views\Drob\Edit.cshtml" />
-    <Content Include="Views\Drob\Index.cshtml" />
+    <Content Include="Views\DrobTyp\Index.cshtml" />
+    <Content Include="Views\KurczakModels\Create.cshtml" />
+    <Content Include="Views\KurczakModels\Delete.cshtml" />
+    <Content Include="Views\KurczakModels\Details.cshtml" />
+    <Content Include="Views\KurczakModels\Edit.cshtml" />
+    <Content Include="Views\KurczakModels\Index.cshtml" />
+    <Content Include="Views\Kura\Create.cshtml" />
+    <Content Include="Views\Kura\Delete.cshtml" />
+    <Content Include="Views\Kura\Details.cshtml" />
+    <Content Include="Views\Kura\Edit.cshtml" />
+    <Content Include="Views\Kura\Index.cshtml" />
+    <Content Include="Views\Kaczka\Create.cshtml" />
+    <Content Include="Views\Kaczka\Delete.cshtml" />
+    <Content Include="Views\Kaczka\Details.cshtml" />
+    <Content Include="Views\Kaczka\Edit.cshtml" />
+    <Content Include="Views\Kaczka\Index.cshtml" />
+    <Content Include="Views\Ges\Create.cshtml" />
+    <Content Include="Views\Ges\Delete.cshtml" />
+    <Content Include="Views\Ges\Details.cshtml" />
+    <Content Include="Views\Ges\Edit.cshtml" />
+    <Content Include="Views\Ges\Index.cshtml" />
+    <Content Include="Views\Indyk\Create.cshtml" />
+    <Content Include="Views\Indyk\Delete.cshtml" />
+    <Content Include="Views\Indyk\Details.cshtml" />
+    <Content Include="Views\Indyk\Edit.cshtml" />
+    <Content Include="Views\Indyk\Index.cshtml" />
     <Content Include="Views\Bydlo\Create.cshtml" />
     <Content Include="Views\Bydlo\Delete.cshtml" />
     <Content Include="Views\Bydlo\Details.cshtml" />
@@ -297,14 +326,14 @@
     <EmbeddedResource Include="Migrations\201603060146350_InitialCreate.resx">
       <DependentUpon>201603060146350_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712021042285_Produkty.resx">
-      <DependentUpon>201712021042285_Produkty.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712031130415_2.resx">
+      <DependentUpon>201712031130415_2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712021110508_Produkty2.resx">
-      <DependentUpon>201712021110508_Produkty2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712031135280_finish bydlo.resx">
+      <DependentUpon>201712031135280_finish bydlo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712021123454_Produkty3.resx">
-      <DependentUpon>201712021123454_Produkty3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712041556563_contact.resx">
+      <DependentUpon>201712041556563_contact.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -4,12 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Pasze dla bydła</h2>
 
+@using (Html.BeginForm())
+{
+    <div>Wiek: </div>
+    <div>@Html.TextBox("Wiek")</div>
+    <div>Typ: </div>
+    <div>@Html.TextBox("Typ")</div>
+    <input type="submit" value="Szukaj" />
+}
+
+<br />
+
+@if (Request.IsAuthenticated && User.IsInRole("Administrator"))
+{
 <p>
-    @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Dodaj", "Create")
 </p>
-<table class="table">
+} 
+
+<table class="table table-hover table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Wiek)
@@ -24,13 +39,13 @@
             @Html.DisplayNameFor(model => model.Producent)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cena)
+            @Html.ActionLink("Cena", "Index", new { sortowanie = ViewBag.SortByCena })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Bialko)
+            @Html.ActionLink("Białko", "Index", new { sortowanie = ViewBag.SortByBialko })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Energia)
+            @Html.ActionLink("Energia", "Index", new { sortowanie = ViewBag.SortByEnergia })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Oleje_I_Tluszcze)
@@ -47,47 +62,57 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Wiek)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Typ)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pasza)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Producent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cena)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bialko)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Energia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Oleje_I_Tluszcze)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Wapn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fosfor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sod)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wiek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Typ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pasza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bialko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Energia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Oleje_I_Tluszcze)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wapn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fosfor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sod)
+            </td>
+            <td>
+                @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
+                {
+                    @Html.ActionLink("Edytuj |", "Edit", new { id = item.ID })
+                }
+
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.ID }) 
+
+                @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
+                {
+                    @Html.ActionLink("| Usuń", "Delete", new { id = item.ID })
+                }
+            </td>
+
+        </tr>
+    }
 
 </table>

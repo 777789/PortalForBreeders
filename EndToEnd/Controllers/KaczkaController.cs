@@ -10,107 +10,107 @@ using EndToEnd.Models;
 
 namespace EndToEnd.Controllers
 {
-    public class TrzodaController : Controller
+    public class KaczkaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Trzoda
+        // GET: Kaczka
         public ActionResult Index()
         {
-            return View(db.TrzodaProducts.ToList());
+            return View(db.KaczkaProducts.ToList());
         }
 
-        // GET: Trzoda/Details/5
+        // GET: Kaczka/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrzodaModels trzodaModels = db.TrzodaProducts.Find(id);
-            if (trzodaModels == null)
+            KaczkaModels kaczkaModels = db.KaczkaProducts.Find(id);
+            if (kaczkaModels == null)
             {
                 return HttpNotFound();
             }
-            return View(trzodaModels);
+            return View(kaczkaModels);
         }
 
-        // GET: Trzoda/Create
+        // GET: Kaczka/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Trzoda/Create
+        // POST: Kaczka/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Wiek,Pasza,Producent,Cena,Bialko,Energia,Tluszcze,Wapn,Fosfor,Sod,Magnez,Lizyna,Metionina,Treonina,Arginina")] TrzodaModels trzodaModels)
+        public ActionResult Create([Bind(Include = "Id,Wiek,Pasza,Producent,Cena,Bialko,Energia,Oleje,Wapn,Fosfor,Sod,Lizyna,Metionina,Treonina")] KaczkaModels kaczkaModels)
         {
             if (ModelState.IsValid)
             {
-                db.TrzodaProducts.Add(trzodaModels);
+                db.KaczkaProducts.Add(kaczkaModels);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(trzodaModels);
+            return View(kaczkaModels);
         }
 
-        // GET: Trzoda/Edit/5
+        // GET: Kaczka/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrzodaModels trzodaModels = db.TrzodaProducts.Find(id);
-            if (trzodaModels == null)
+            KaczkaModels kaczkaModels = db.KaczkaProducts.Find(id);
+            if (kaczkaModels == null)
             {
                 return HttpNotFound();
             }
-            return View(trzodaModels);
+            return View(kaczkaModels);
         }
 
-        // POST: Trzoda/Edit/5
+        // POST: Kaczka/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Wiek,Pasza,Producent,Cena,Bialko,Energia,Tluszcze,Wapn,Fosfor,Sod,Magnez,Lizyna,Metionina,Treonina,Arginina")] TrzodaModels trzodaModels)
+        public ActionResult Edit([Bind(Include = "Id,Wiek,Pasza,Producent,Cena,Bialko,Energia,Oleje,Wapn,Fosfor,Sod,Lizyna,Metionina,Treonina")] KaczkaModels kaczkaModels)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(trzodaModels).State = EntityState.Modified;
+                db.Entry(kaczkaModels).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(trzodaModels);
+            return View(kaczkaModels);
         }
 
-        // GET: Trzoda/Delete/5
+        // GET: Kaczka/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrzodaModels trzodaModels = db.TrzodaProducts.Find(id);
-            if (trzodaModels == null)
+            KaczkaModels kaczkaModels = db.KaczkaProducts.Find(id);
+            if (kaczkaModels == null)
             {
                 return HttpNotFound();
             }
-            return View(trzodaModels);
+            return View(kaczkaModels);
         }
 
-        // POST: Trzoda/Delete/5
+        // POST: Kaczka/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TrzodaModels trzodaModels = db.TrzodaProducts.Find(id);
-            db.TrzodaProducts.Remove(trzodaModels);
+            KaczkaModels kaczkaModels = db.KaczkaProducts.Find(id);
+            db.KaczkaProducts.Remove(kaczkaModels);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

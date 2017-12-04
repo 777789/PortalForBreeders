@@ -5,7 +5,7 @@ using System.Web;
 
 namespace EndToEnd.Models
 {
-    public class DrobModels
+    public class GesModels
     {
         public int Id { get; set; }
         public string Wiek { get; set; }
@@ -14,9 +14,7 @@ namespace EndToEnd.Models
         public decimal Cena { get; set; }
         public decimal Bialko { get; set; }
         public decimal Energia { get; set; }
-        public decimal Oleje_i_tluszcze { get; set; }
-        public decimal Wlokno_surowe { get; set; }
-        public decimal Popiol_surowy { get; set; }
+        public decimal Oleje { get; set; }
         public decimal Wapn { get; set; }
         public decimal Fosfor { get; set; }
         public decimal Sod { get; set; }

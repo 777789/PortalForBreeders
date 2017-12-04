@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EndToEnd.Models.TrzodaModels>
+﻿@model IEnumerable<EndToEnd.Models.IndykModels>
 
 @{
     ViewBag.Title = "Index";
@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.Energia)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tluszcze)
+            @Html.DisplayNameFor(model => model.Oleje)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Wapn)
@@ -42,9 +42,6 @@
             @Html.DisplayNameFor(model => model.Sod)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Magnez)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Lizyna)
         </th>
         <th>
@@ -52,9 +49,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Treonina)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Arginina)
         </th>
         <th></th>
     </tr>
@@ -80,7 +74,7 @@
             @Html.DisplayFor(modelItem => item.Energia)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Tluszcze)
+            @Html.DisplayFor(modelItem => item.Oleje)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Wapn)
@@ -92,9 +86,6 @@
             @Html.DisplayFor(modelItem => item.Sod)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Magnez)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Lizyna)
         </td>
         <td>
@@ -102,9 +93,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Treonina)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Arginina)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

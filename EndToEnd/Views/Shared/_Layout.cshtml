@@ -9,19 +9,19 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
 
-                        <li>@Html.ActionLink("Portal dla hodowców", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Portal dla hodowców", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
 
 
 
@@ -29,38 +29,38 @@
                      
 
 
-                        @Html.Partial("_LoginPartial")
+                    @Html.Partial("_LoginPartial")
 
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zwierzęta <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Bydło", "Bydlo", "Animals")</li>
-                            <li>@Html.ActionLink("Trzoda", "Trzoda", "Animals")</li>
-                            <li>@Html.ActionLink("Gęś", "Ges", "Animals")</li>
-                            <li />
-                        </ul>
-                            
-                        <li>@Html.ActionLink("Porady", "Porady", "Home")</li>
-                        <li>@Html.ActionLink("Kontakt", "Kontakt", "Home")</li>
-                            
-                            
-
-                            
-                        @if (User.IsInRole("Administrator"))
-                        {
-                            <li>@Html.ActionLink("Administracja", "Index", "Admin")</li>
-                        }
-                            
-
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zwierzęta <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("Bydło", "Index", "Bydlo")</li>
+                        <li>@Html.ActionLink("Trzoda", "Index", "Trzoda")</li>
+                        <li>@Html.ActionLink("Drób", "Index", "DrobTyp")</li>
+                        <li />
                     </ul>
-                </div>
+                            
+                    <li>@Html.ActionLink("Porady", "Porady", "Home")</li>
+                    <li>@Html.ActionLink("Kontakt", "Kontakt","Home")</li>
+                            
+                            
+
+                            
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Administracja", "Index", "Admin")</li>
+                    }
+                            
+
+                </ul>
+            </div>
 
 
 
             
-            </div>
         </div>
     </div>
+</div>
     <div class="container body-content">
         @RenderBody()
         <hr />
