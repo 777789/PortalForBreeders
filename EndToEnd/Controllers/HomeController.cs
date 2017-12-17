@@ -26,5 +26,11 @@ namespace EndToEnd.Controllers
 
             return View();
         }
+
+        public ActionResult Producenci()
+        {
+            ViewBag.Message = "";
+            return View();
+        }
     }
 }

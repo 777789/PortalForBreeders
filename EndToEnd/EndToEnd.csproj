@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201712041556563_contact.Designer.cs">
       <DependentUpon>201712041556563_contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712051331081_test.cs" />
+    <Compile Include="Migrations\201712051331081_test.Designer.cs">
+      <DependentUpon>201712051331081_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BydloModels.cs" />
@@ -291,11 +295,6 @@
     <Content Include="Views\Trzoda\Edit.cshtml" />
     <Content Include="Views\Trzoda\Index.cshtml" />
     <Content Include="Views\DrobTyp\Index.cshtml" />
-    <Content Include="Views\KurczakModels\Create.cshtml" />
-    <Content Include="Views\KurczakModels\Delete.cshtml" />
-    <Content Include="Views\KurczakModels\Details.cshtml" />
-    <Content Include="Views\KurczakModels\Edit.cshtml" />
-    <Content Include="Views\KurczakModels\Index.cshtml" />
     <Content Include="Views\Kura\Create.cshtml" />
     <Content Include="Views\Kura\Delete.cshtml" />
     <Content Include="Views\Kura\Details.cshtml" />
@@ -321,6 +320,7 @@
     <Content Include="Views\Bydlo\Details.cshtml" />
     <Content Include="Views\Bydlo\Edit.cshtml" />
     <Content Include="Views\Bydlo\Index.cshtml" />
+    <Content Include="Views\Home\Producenci.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603060146350_InitialCreate.resx">
@@ -334,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712041556563_contact.resx">
       <DependentUpon>201712041556563_contact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051331081_test.resx">
+      <DependentUpon>201712051331081_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

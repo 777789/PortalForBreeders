@@ -17,7 +17,7 @@ namespace EndToEnd.Controllers
        
         // GET: Bydlo
         
-        public ActionResult Index(BydloModels Model, string sortowanie)
+        public ActionResult Index(string sortowanie, BydloModels Model)
         {
             var sortowaniebydlo = from i in db.BydloProducts
                                   select i;
@@ -27,7 +27,7 @@ namespace EndToEnd.Controllers
                                   where i.Wiek.Equals(Model.Wiek)
                                   select i;
             }
-
+           
             ViewBag.SortByCena = sortowanie == "Cena_Malejaco" ? "Cena_Rosnaco" : "Cena_Malejaco";
             ViewBag.SortByBialko = sortowanie == "Bialko_Malejaco" ? "Bialko_Rosnaco" : "Bialko_Malejaco";
             ViewBag.SortByEnergia = sortowanie == "Energia_Malejaco" ? "Energia_Rosnaco" : "Energia_Malejaco";

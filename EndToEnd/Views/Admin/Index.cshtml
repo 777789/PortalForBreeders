@@ -6,22 +6,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
+<br />
 <p>
     @Html.ActionLink("Nowy Admin", "Create", null, new { @class = "btn btn-default" })
 
     <!-- @Html.ActionLink("Zmien Role", "ViewAllRoles", null, new { @class = "btn btn-default" }) -->
 </p>
 <br />
-@using (Html.BeginForm("Index", "Admin", FormMethod.Get))
-{
 
+@*@@using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+{
+/*
     <div class="form-group">
         Szukaj:&nbsp; @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string)
 
         <input type="submit" value="Szukaj" />
-    </div>
-}
-<br />
+    </div>*/
+*}*@
+
 
 <table class="table">
     <tr>
