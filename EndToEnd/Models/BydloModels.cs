@@ -21,7 +21,5 @@ namespace EndToEnd.Models
         public float Wapn {get; set;}
         public float Fosfor {get; set;}
         public float Sod { get; set; }
-        public SortDirection SortDirection { get; internal set; }
-        public string SortExpression { get; internal set; }
     }
 }

@@ -6,14 +6,6 @@
 
 <h2>Pasze dla bydła</h2>
 
-@using (Html.BeginForm())
-{
-    <div>Wiek: </div>
-    <div>@Html.TextBox("Wiek")</div>
-    <div>Typ: </div>
-    <div>@Html.TextBox("Typ")</div>
-    <input type="submit" value="Szukaj" />
-}
 
 <br />
 
@@ -23,6 +15,22 @@
         @Html.ActionLink("Dodaj", "Create")
 </p>
 } 
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
 
 <table class="table table-hover table-bordered">
     <tr>
@@ -39,13 +47,13 @@
             @Html.DisplayNameFor(model => model.Producent)
         </th>
         <th>
-            @Html.ActionLink("Cena", "Index", new { sortowanie = ViewBag.SortByCena })
+            @Html.ActionLink("Cena", "Index", new { SortOrder = ViewBag.CenaSortParm })
         </th>
         <th>
-            @Html.ActionLink("Białko", "Index", new { sortowanie = ViewBag.SortByBialko })
+            @Html.ActionLink("Białko", "Index", new { SortOrder = ViewBag.BialkoSortParm })
         </th>
         <th>
-            @Html.ActionLink("Energia", "Index", new { sortowanie = ViewBag.SortByEnergia })
+            @Html.DisplayNameFor(model => model.Energia)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Oleje_I_Tluszcze)

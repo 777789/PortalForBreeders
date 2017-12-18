@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using EndToEnd.Models;
 using System.Web.UI;
+using PagedList;
 
 namespace EndToEnd.Controllers
 {
@@ -15,73 +16,56 @@ namespace EndToEnd.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
        
-        // GET: Bydlo
-        
-        public ActionResult Index(string sortowanie, BydloModels Model)
+        // GET: Bydlo  
+        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
         {
-            var sortowaniebydlo = from i in db.BydloProducts
-                                  select i;
-            if (Model != null)
-            {
-                sortowaniebydlo = from i in db.BydloProducts
-                                  where i.Wiek.Equals(Model.Wiek)
-                                  select i;
-            }
-           
-            ViewBag.SortByCena = sortowanie == "Cena_Malejaco" ? "Cena_Rosnaco" : "Cena_Malejaco";
-            ViewBag.SortByBialko = sortowanie == "Bialko_Malejaco" ? "Bialko_Rosnaco" : "Bialko_Malejaco";
-            ViewBag.SortByEnergia = sortowanie == "Energia_Malejaco" ? "Energia_Rosnaco" : "Energia_Malejaco";
+            ViewBag.CenaSortParm = String.IsNullOrEmpty(sortOrder) ? "Cena" : "";
+            ViewBag.BialkoSortParm = sortOrder == "Bialko" ? "bialko_desc" : "Bialko";
 
-            var produktyDlaBydla = from i in db.BydloProducts
-                                   select i;
-            switch (sortowanie)
+
+
+
+            var Bsort = from s in db.BydloProducts
+                select s;
+
+
+
+
+            if (!String.IsNullOrEmpty(searchString))
             {
-                case "Cena_Malejaco":
-                    produktyDlaBydla = produktyDlaBydla.OrderByDescending(s => s.Cena);
+                Bsort = db.BydloProducts.Where(s => s.Wiek.Contains(searchString)
+                                               || s.Typ.Contains(searchString)
+                                               || s.Producent.Contains(searchString));
+            }
+
+
+
+            switch (sortOrder)
+            {
+                case "Cena":
+                    Bsort = Bsort.OrderByDescending(s => s.Cena);
                     break;
-                case "Cena_Rosnaco":
-                    produktyDlaBydla = produktyDlaBydla.OrderBy(s => s.Cena);
+                case "Bialko":
+                    Bsort = Bsort.OrderBy(s => s.Bialko);
                     break;
-                case "Bialko_Malejaco":
-                    produktyDlaBydla = produktyDlaBydla.OrderByDescending(s => s.Bialko);
-                    break;
-                case "Bialko_Rosnaco":
-                    produktyDlaBydla = produktyDlaBydla.OrderBy(s => s.Bialko);
-                    break;
-                case "Energia_Malejaco":
-                    produktyDlaBydla = produktyDlaBydla.OrderByDescending(s => s.Energia);
-                    break;
-                case "Energia_Rosnaco":
-                    produktyDlaBydla = produktyDlaBydla.OrderBy(s => s.Energia);
+                case "bialko_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Bialko);
                     break;
                 default:
-                    produktyDlaBydla = produktyDlaBydla.OrderBy(s => s.Cena);
+                    Bsort = Bsort.OrderBy(s => s.Cena);
                     break;
             }
 
-            if (ModelState.IsValid)
-            {
-                if (Model.Wiek != null && Model.Typ != null)
-                {
-                    produktyDlaBydla = from i in db.BydloProducts
-                                       where i.Wiek.Equals(Model.Wiek)
-                                             && i.Typ.Equals(Model.Typ)
-                                       select i;
-                }
-                else if (Model.Wiek != null)
-                {
-                    produktyDlaBydla = from i in db.BydloProducts
-                                       where i.Wiek.Equals(Model.Wiek)
-                                       select i;
-                }
-                else if (Model.Typ != null)
-                {
-                    produktyDlaBydla = from i in db.BydloProducts
-                                       where i.Typ.Equals(Model.Typ)
-                                       select i;
-                }
-            }
-            return View(db.BydloProducts.ToList());
+
+
+
+
+
+
+
+
+
+            return View(Bsort.ToList());
         }
   
         // GET: Bydlo/Details/5
