@@ -1,4 +1,7 @@
-﻿@model IEnumerable<EndToEnd.Models.BydloModels>
+﻿
+@model PagedList.IPagedList<EndToEnd.Models.BydloModels>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -11,61 +14,57 @@
 
 @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
 {
-<p>
+    <p>
         @Html.ActionLink("Dodaj", "Create")
-</p>
-} 
-
-@using (Html.BeginForm())
-{
-    <p>
-        Find by name: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
     </p>
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "Bydlo", FormMethod.Get))
 {
     <p>
-        Find by name: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
+        Szukaj po wieku: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <button type="submit" class="btn btn-info" name="Szukaj">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
     </p>
 }
+
+
 
 <table class="table table-hover table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Wiek)
+            @Html.ActionLink("Wiek", "Index", "Bydlo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Typ)
+            @Html.ActionLink("Typ", "Index", "Bydlo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Pasza)
+            @Html.ActionLink("Pasza", "Index", "Bydlo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Producent)
+            @Html.ActionLink("Producent", "Index", "Bydlo")
         </th>
         <th>
-            @Html.ActionLink("Cena", "Index", new { SortOrder = ViewBag.CenaSortParm })
+            @Html.ActionLink("Cena >>", "Index", new { SortOrder = ViewBag.CenaSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Białko", "Index", new { SortOrder = ViewBag.BialkoSortParm })
+            @Html.ActionLink("Białko", "Index", new { SortOrder = ViewBag.BialkoSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Energia)
+            @Html.ActionLink("Energia", "Index", "Bydlo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Oleje_I_Tluszcze)
+            @Html.ActionLink("Oleje i tłuszcze", "Index", "Bydlo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Wapn)
+            @Html.ActionLink("Wapń", "Index", "Bydlo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fosfor)
+            @Html.ActionLink("Fosfor", "Index", "Bydlo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sod)
+            @Html.ActionLink("Sód", "Index", "Bydlo")
         </th>
         <th></th>
     </tr>
@@ -111,29 +110,9 @@
                 {
                     @Html.ActionLink("Edytuj |", "Edit", new { id = item.ID })
                 }
-                
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                    @Html.ActionLink("Szczegóły", "Details", new { id = item.ID })
-                    
-                </button>
                
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Zamknij</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Tytuł okienka pop-up</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Zawartość okienka pop-up</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @Html.ActionLink("Szczegóły", "Details", new { id = item.ID })
+
 
                 @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
                 {
@@ -145,3 +124,7 @@
     }
 
 </table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

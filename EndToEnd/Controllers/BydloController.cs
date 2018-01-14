@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using EndToEnd.Models;
 using System.Web.UI;
+using System.Web.UI.WebControls.Expressions;
 using PagedList;
 
 namespace EndToEnd.Controllers
@@ -17,28 +18,32 @@ namespace EndToEnd.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
        
         // GET: Bydlo  
-        public ActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.CenaSortParm = String.IsNullOrEmpty(sortOrder) ? "Cena" : "";
             ViewBag.BialkoSortParm = sortOrder == "Bialko" ? "bialko_desc" : "Bialko";
 
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
 
-
+            ViewBag.CurrentFilter = searchString;
 
             var Bsort = from s in db.BydloProducts
                 select s;
 
 
-
-
             if (!String.IsNullOrEmpty(searchString))
             {
-                Bsort = db.BydloProducts.Where(s => s.Wiek.Contains(searchString)
-                                               || s.Typ.Contains(searchString)
-                                               || s.Producent.Contains(searchString));
+                Bsort = db.BydloProducts.Where(s => s.Wiek.Contains(searchString));
+              
             }
-
-
 
             switch (sortOrder)
             {
@@ -56,16 +61,10 @@ namespace EndToEnd.Controllers
                     break;
             }
 
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(Bsort.ToPagedList(pageNumber, pageSize));
 
-
-
-
-
-
-
-
-
-            return View(Bsort.ToList());
         }
   
         // GET: Bydlo/Details/5
