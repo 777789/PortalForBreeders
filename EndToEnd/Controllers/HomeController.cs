@@ -24,6 +24,7 @@ namespace EndToEnd.Controllers
             return View();
         }
 
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Contact(EmailFormModel model)
@@ -61,8 +62,12 @@ namespace EndToEnd.Controllers
             return View();
         }
 
-
-
+    ,*/
+        public ActionResult Informacje()
+        {
+            ViewBag.Message = "";
+            return View();
+        }
         public ActionResult Producenci()
         {
             ViewBag.Message = "";

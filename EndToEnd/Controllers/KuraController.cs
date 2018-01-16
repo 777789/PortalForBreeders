@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EndToEnd.Models;
+using PagedList;
 
 namespace EndToEnd.Controllers
 {
@@ -15,9 +16,109 @@ namespace EndToEnd.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Kura
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.DrobProducts.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CenaSortParm = String.IsNullOrEmpty(sortOrder) ? "Cena" : "";
+            ViewBag.BialkoSortParm = sortOrder == "Bialko" ? "bialko_desc" : "Bialko";
+            ViewBag.EnergiaSortParm = sortOrder == "Energia" ? "Energia_desc" : "Energia";
+            ViewBag.OlejeSortParm = sortOrder == "Oleje" ? "Oleje_desc" : "Oleje";
+            ViewBag.WapnSortParm = sortOrder == "Wapn" ? "Wapn_desc" : "Wapn";
+            ViewBag.FosforSortParm = sortOrder == "Fosfor" ? "Fosfor_desc" : "Fosfor";
+            ViewBag.SodSortParm = sortOrder == "Sod" ? "Sod_desc" : "Sod";
+            ViewBag.LizynaSortParm = sortOrder == "Lizyna" ? "Lizyna_desc" : "Lizyna";
+            ViewBag.MetioninaSortParm = sortOrder == "Metionina" ? "Metionina_desc" : "Metionina";
+            ViewBag.TreoinaSortParm = sortOrder == "Treoina" ? "Treoina_desc" : "Treoina";
+            ViewBag.ArgininaSortParm = sortOrder == "Arginina" ? "Arginina_desc" : "Arginina";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var Bsort = from s in db.KuraProducts
+                        select s;
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Bsort = db.KuraProducts.Where(s => s.Wiek.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "Cena":
+                    Bsort = Bsort.OrderByDescending(s => s.Cena);
+                    break;
+                case "Bialko":
+                    Bsort = Bsort.OrderBy(s => s.Bialko);
+                    break;
+                case "bialko_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Bialko);
+                    break;
+                case "Energia":
+                    Bsort = Bsort.OrderBy(s => s.Energia);
+                    break;
+                case "Energia_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Energia);
+                    break;
+                case "Wapn":
+                    Bsort = Bsort.OrderBy(s => s.Wapn);
+                    break;
+                case "Wapn_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Wapn);
+                    break;
+                case "Sod":
+                    Bsort = Bsort.OrderBy(s => s.Sod);
+                    break;
+                case "Sod_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Sod);
+                    break;
+                case "Oleje":
+                    Bsort = Bsort.OrderBy(s => s.Sod);
+                    break;
+                case "Oleje_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Sod);
+                    break;
+                case "Fosfor":
+                    Bsort = Bsort.OrderBy(s => s.Fosfor);
+                    break;
+                case "Fosfor_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Fosfor);
+                    break;
+                case "Lizyna":
+                    Bsort = Bsort.OrderBy(s => s.Lizyna);
+                    break;
+                case "Lizyna_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Lizyna);
+                    break;
+                case "Metionina":
+                    Bsort = Bsort.OrderBy(s => s.Metionina);
+                    break;
+                case "Metionina_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Metionina);
+                    break;
+                case "Treoina":
+                    Bsort = Bsort.OrderBy(s => s.Treonina);
+                    break;
+                case "Treoina_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Treonina);
+                    break;
+                default:
+                    Bsort = Bsort.OrderBy(s => s.Cena);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(Bsort.ToPagedList(pageNumber, pageSize));
+
         }
 
         // GET: Kura/Details/5
@@ -27,7 +128,7 @@ namespace EndToEnd.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KuraModels kuraModels = db.DrobProducts.Find(id);
+            KuraModels kuraModels = db.KuraProducts.Find(id);
             if (kuraModels == null)
             {
                 return HttpNotFound();
@@ -50,7 +151,7 @@ namespace EndToEnd.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.DrobProducts.Add(kuraModels);
+                db.KuraProducts.Add(kuraModels);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +166,7 @@ namespace EndToEnd.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KuraModels kuraModels = db.DrobProducts.Find(id);
+            KuraModels kuraModels = db.KuraProducts.Find(id);
             if (kuraModels == null)
             {
                 return HttpNotFound();
@@ -96,7 +197,7 @@ namespace EndToEnd.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KuraModels kuraModels = db.DrobProducts.Find(id);
+            KuraModels kuraModels = db.KuraProducts.Find(id);
             if (kuraModels == null)
             {
                 return HttpNotFound();
@@ -109,8 +210,8 @@ namespace EndToEnd.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            KuraModels kuraModels = db.DrobProducts.Find(id);
-            db.DrobProducts.Remove(kuraModels);
+            KuraModels kuraModels = db.KuraProducts.Find(id);
+            db.KuraProducts.Remove(kuraModels);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

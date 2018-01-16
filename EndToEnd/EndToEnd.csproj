@@ -213,11 +213,14 @@
     <Compile Include="Migrations\201712181447534_sortowanie.Designer.cs">
       <DependentUpon>201712181447534_sortowanie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801161432003_test1.cs" />
+    <Compile Include="Migrations\201801161432003_test1.Designer.cs">
+      <DependentUpon>201801161432003_test1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BydloModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\IndykModels.cs" />
     <Compile Include="Models\GesModels.cs" />
     <Compile Include="Models\KaczkaModels.cs" />
@@ -326,8 +329,7 @@
     <Content Include="Views\Bydlo\Edit.cshtml" />
     <Content Include="Views\Bydlo\Index.cshtml" />
     <Content Include="Views\Home\Producenci.cshtml" />
-    <Content Include="Views\Home\Sent.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Informacje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603060146350_InitialCreate.resx">
@@ -347,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712181447534_sortowanie.resx">
       <DependentUpon>201712181447534_sortowanie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801161432003_test1.resx">
+      <DependentUpon>201801161432003_test1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

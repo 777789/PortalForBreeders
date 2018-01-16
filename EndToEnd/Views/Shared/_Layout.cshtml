@@ -25,8 +25,8 @@
 
 
 
-                     
-                     
+
+
 
 
                     @Html.Partial("_LoginPartial")
@@ -39,35 +39,37 @@
                         <li>@Html.ActionLink("Drób", "Index", "DrobTyp")</li>
                         <li />
                     </ul>
-                            
-                    <li>@Html.ActionLink("Porady", "Porady", "Home")</li>
-                    <li>@Html.ActionLink("Producenci", "Producenci","Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Kontakt","Home")</li>
-                            
 
-                            
+                    <li>@Html.ActionLink("Porady", "Porady", "Home")</li>
+                    <li>@Html.ActionLink("Producenci", "Producenci", "Home")</li>
+                    <li>@Html.ActionLink("Informacje", "Informacje", "Home")</li>
+
+
+
                     @if (User.IsInRole("Administrator"))
                     {
                         <li>@Html.ActionLink("Administracja", "Index", "Admin")</li>
                     }
-                            
+
 
                 </ul>
             </div>
-
-
-
-            
         </div>
     </div>
 </div>
+
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - ASP.NET Application</p>
-        </footer>
-    </div>
+    <hr />
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - ASP.NET Application</p>
+
+        <a href="mailto:inzynierskaaa@gmail.com" style="color: rgb(71, 124, 204); text-decoration: none; display: inline;">inzynierskaaa@gmail.com</a><span style="display: inline; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif;"> </span>
+
+    </footer>
+        </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

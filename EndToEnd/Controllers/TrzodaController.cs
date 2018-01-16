@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EndToEnd.Models;
+using PagedList;
 
 namespace EndToEnd.Controllers
 {
@@ -15,10 +16,124 @@ namespace EndToEnd.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Trzoda
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.TrzodaProducts.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CenaSortParm = String.IsNullOrEmpty(sortOrder) ? "Cena" : "";
+            ViewBag.BialkoSortParm = sortOrder == "Bialko" ? "bialko_desc" : "Bialko";
+            ViewBag.EnergiaSortParm = sortOrder == "Energia" ? "Energia_desc" : "Energia";
+            ViewBag.TluszczeSortParm = sortOrder == "Tluszcze" ? "Tluszcze_desc" : "Tluszcze";
+            ViewBag.WapnSortParm = sortOrder == "Wapn" ? "Wapn_desc" : "Wapn";
+            ViewBag.FosforSortParm = sortOrder == "Fosfor" ? "Fosfor_desc" : "Fosfor";
+            ViewBag.SodSortParm = sortOrder == "Sod" ? "Sod_desc" : "Sod";
+            ViewBag.MagnezSortParm = sortOrder == "Magnez" ? "Magnez_desc" : "Magnez";
+            ViewBag.LizynaSortParm = sortOrder == "Lizyna" ? "Lizyna_desc" : "Lizyna";
+            ViewBag.MetioninaSortParm = sortOrder == "Metionina" ? "Metionina_desc" : "Metionina";
+            ViewBag.TreoinaSortParm = sortOrder == "Treoina" ? "Treoina_desc" : "Treoina";
+            ViewBag.ArgininaSortParm = sortOrder == "Arginina" ? "Arginina_desc" : "Arginina";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var Bsort = from s in db.TrzodaProducts
+                        select s;
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Bsort = db.TrzodaProducts.Where(s => s.Wiek.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "Cena":
+                    Bsort = Bsort.OrderByDescending(s => s.Cena);
+                    break;
+                case "Bialko":
+                    Bsort = Bsort.OrderBy(s => s.Bialko);
+                    break;
+                case "bialko_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Bialko);
+                    break;
+                case "Energia":
+                    Bsort = Bsort.OrderBy(s => s.Energia);
+                    break;
+                case "Energia_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Energia);
+                    break;
+                case "Tluszcze":
+                    Bsort = Bsort.OrderBy(s => s.Tluszcze);
+                    break;
+                case "Tluszcze_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Tluszcze);
+                    break;
+                case "Wapn":
+                    Bsort = Bsort.OrderBy(s => s.Wapn);
+                    break;
+                case "Wapn_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Wapn);
+                    break;
+                case "Sod":
+                    Bsort = Bsort.OrderBy(s => s.Sod);
+                    break;
+                case "Sod_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Sod);
+                    break;
+                case "Magnez":
+                    Bsort = Bsort.OrderBy(s => s.Magnez);
+                    break;
+                case "Magnez_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Magnez);
+                    break;
+                case "Fosfor":
+                    Bsort = Bsort.OrderBy(s => s.Fosfor);
+                    break;
+                case "Fosfor_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Fosfor);
+                    break;
+                case "Lizyna":
+                    Bsort = Bsort.OrderBy(s => s.Lizyna);
+                    break;
+                case "Lizyna_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Lizyna);
+                    break;
+                case "Metionina":
+                    Bsort = Bsort.OrderBy(s => s.Metionina);
+                    break;
+                case "Metionina_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Metionina);
+                    break;
+                case "Treoina":
+                    Bsort = Bsort.OrderBy(s => s.Treonina);
+                    break;
+                case "Treoina_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Treonina);
+                    break;
+                case "Arginina":
+                    Bsort = Bsort.OrderBy(s => s.Arginina);
+                    break;
+                case "Arginina_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Arginina);
+                    break;
+                default:
+                    Bsort = Bsort.OrderBy(s => s.Cena);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(Bsort.ToPagedList(pageNumber, pageSize));
+
         }
+
 
         // GET: Trzoda/Details/5
         public ActionResult Details(int? id)
