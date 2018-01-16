@@ -6,10 +6,10 @@
 
 <h2>Dodaj</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Paszę dla bydła</h4>
         <hr />
@@ -111,5 +111,5 @@
 }
 
 <div>
-    @Html.ActionLink("Powrót do listy", "Index")
+    <a class="btn btn-primary" @Html.ActionLink("Powrót do listy", "Index")
 </div>

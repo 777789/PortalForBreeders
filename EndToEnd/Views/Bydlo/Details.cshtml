@@ -101,10 +101,9 @@
     </dl>
 </div>
 <p>
-    @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
-    {
-        @Html.ActionLink("Edytuj", "Edit", new {id = Model.ID})
-       
-    }
-    <a class="btn btn-primary" @Html.ActionLink("Powrót do listy", "Index")
+    <a class="btn btn-primary"
+       @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
+       { @Html.ActionLink("Edytuj", "Edit", new { id = Model.ID })}
+    
+        <a class="btn btn-primary" @Html.ActionLink("Powrót do listy", "Index")
 </p>

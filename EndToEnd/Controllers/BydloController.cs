@@ -23,14 +23,19 @@ namespace EndToEnd.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.CenaSortParm = String.IsNullOrEmpty(sortOrder) ? "Cena" : "";
             ViewBag.BialkoSortParm = sortOrder == "Bialko" ? "bialko_desc" : "Bialko";
-
-            if (searchString != null)
+            ViewBag.EnergiaSortParm = sortOrder == "Energia" ? "Energia_desc" : "Energia";
+            ViewBag.OlejeSortParm = sortOrder == "Oleje" ? "Oleje_desc" : "Oleje";
+            ViewBag.WapnSortParm = sortOrder == "Wapn" ? "Wapn_desc" : "Wapn";
+            ViewBag.FosforSortParm = sortOrder == "Fosfor" ? "Fosfor_desc" : "Fosfor";
+            ViewBag.SodSortParm = sortOrder == "Sod" ? "Sod_desc" : "Sod";
+      
+            if (searchString != null) 
             {
                 page = 1;
             }
             else
             {
-                searchString = currentFilter;
+                searchString = currentFilter;  
             }
 
             ViewBag.CurrentFilter = searchString;
@@ -42,7 +47,6 @@ namespace EndToEnd.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 Bsort = db.BydloProducts.Where(s => s.Wiek.Contains(searchString));
-              
             }
 
             switch (sortOrder)
@@ -55,6 +59,36 @@ namespace EndToEnd.Controllers
                     break;
                 case "bialko_desc":
                     Bsort = Bsort.OrderByDescending(s => s.Bialko);
+                    break;
+                case "Energia":
+                    Bsort = Bsort.OrderBy(s => s.Energia);
+                    break;
+                case "Energia_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Energia);
+                    break;
+                case "Oleje":
+                    Bsort = Bsort.OrderBy(s => s.Oleje_I_Tluszcze);
+                    break;
+                case "Oleje_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Oleje_I_Tluszcze);
+                    break;
+                case "Wapn":
+                    Bsort = Bsort.OrderBy(s => s.Wapn);
+                    break;
+                case "Wapn_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Wapn);
+                    break;
+                case "Fosfor":
+                    Bsort = Bsort.OrderBy(s => s.Fosfor);
+                    break;
+                case "Fosfor_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Fosfor);
+                    break;
+                case "Sod":
+                    Bsort = Bsort.OrderBy(s => s.Sod);
+                    break;
+                case "Sod_desc":
+                    Bsort = Bsort.OrderByDescending(s => s.Sod);
                     break;
                 default:
                     Bsort = Bsort.OrderBy(s => s.Cena);

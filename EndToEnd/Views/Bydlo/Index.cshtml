@@ -9,13 +9,13 @@
 
 <h2>Pasze dla bydła</h2>
 
-
 <br />
 
 @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
 {
     <p>
-        @Html.ActionLink("Dodaj", "Create")
+
+        <a class="btn btn-primary" @Html.ActionLink("Dodaj", "Create")
     </p>
 }
 
@@ -28,8 +28,6 @@
         </button>
     </p>
 }
-
-
 
 <table class="table table-hover table-bordered">
     <tr>
@@ -46,25 +44,25 @@
             @Html.ActionLink("Producent", "Index", "Bydlo")
         </th>
         <th>
-            @Html.ActionLink("Cena >>", "Index", new { SortOrder = ViewBag.CenaSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Cena", "Index", new { SortOrder = ViewBag.CenaSortParm, currentFilter = ViewBag.CurrentFilter }) (Zł/50kg)
         </th>
         <th>
-            @Html.ActionLink("Białko", "Index", new { SortOrder = ViewBag.BialkoSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Białko", "Index", new { SortOrder = ViewBag.BialkoSortParm, currentFilter = ViewBag.CurrentFilter }) (%)
         </th>
         <th>
-            @Html.ActionLink("Energia", "Index", "Bydlo")
+            @Html.ActionLink("Energia", "Index", new { SortOrder = ViewBag.EnergiaSortParm, currentFilter = ViewBag.CurrentFilter }) (%)
         </th>
         <th>
-            @Html.ActionLink("Oleje i tłuszcze", "Index", "Bydlo")
+            @Html.ActionLink("Oleje i Tłuszcze", "Index", new { SortOrder = ViewBag.OlejeSortParm, currentFilter = ViewBag.CurrentFilter }) (%)
         </th>
         <th>
-            @Html.ActionLink("Wapń", "Index", "Bydlo")
+            @Html.ActionLink("Wapń", "Index", new { SortOrder = ViewBag.WapnSortParm, currentFilter = ViewBag.CurrentFilter }) (%)
         </th>
         <th>
-            @Html.ActionLink("Fosfor", "Index", "Bydlo")
+            @Html.ActionLink("Fosfor", "Index", new { SortOrder = ViewBag.FosforSortParm, currentFilter = ViewBag.CurrentFilter }) (%)
         </th>
         <th>
-            @Html.ActionLink("Sód", "Index", "Bydlo")
+            @Html.ActionLink("Sód", "Index", new { SortOrder = ViewBag.SodSortParm, currentFilter = ViewBag.CurrentFilter }) (%)
         </th>
         <th></th>
     </tr>
@@ -110,8 +108,8 @@
                 {
                     @Html.ActionLink("Edytuj |", "Edit", new { id = item.ID })
                 }
-               
-                    @Html.ActionLink("Szczegóły", "Details", new { id = item.ID })
+
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.ID })
 
 
                 @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
@@ -124,7 +122,7 @@
     }
 
 </table>
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

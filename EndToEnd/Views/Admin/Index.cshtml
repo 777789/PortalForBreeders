@@ -27,9 +27,9 @@
 
 <table class="table">
     <tr>
-        <th>
-            Email
-        </th>
+       
+        <h3>Email</h3>
+        
     </tr>
 
     @foreach (var item in Model)
@@ -42,7 +42,7 @@
                 @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
             </td>
             <td>
-                @Html.ActionLink("Edycja", "EditUser", new { UserName = item.UserName }) |
+                @Html.ActionLink("Edycja", "EditUser", new { UserName = item.UserName }) 
                 @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
                 {
                     @Html.ActionLink("Usuń", "DeleteUser", new { UserName = item.UserName },
