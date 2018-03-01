@@ -16,7 +16,7 @@ namespace EndToEnd.Controllers
     public class BydloController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-       
+
         // GET: Bydlo  
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -28,20 +28,20 @@ namespace EndToEnd.Controllers
             ViewBag.WapnSortParm = sortOrder == "Wapn" ? "Wapn_desc" : "Wapn";
             ViewBag.FosforSortParm = sortOrder == "Fosfor" ? "Fosfor_desc" : "Fosfor";
             ViewBag.SodSortParm = sortOrder == "Sod" ? "Sod_desc" : "Sod";
-      
-            if (searchString != null) 
+
+            if (searchString != null)
             {
                 page = 1;
             }
             else
             {
-                searchString = currentFilter;  
+                searchString = currentFilter;
             }
 
             ViewBag.CurrentFilter = searchString;
 
             var Bsort = from s in db.BydloProducts
-                select s;
+                        select s;
 
 
             if (!String.IsNullOrEmpty(searchString))
@@ -67,10 +67,10 @@ namespace EndToEnd.Controllers
                     Bsort = Bsort.OrderByDescending(s => s.Energia);
                     break;
                 case "Oleje":
-                    Bsort = Bsort.OrderBy(s => s.Oleje_I_Tluszcze);
+                    Bsort = Bsort.OrderBy(s => s.Tluszcze);
                     break;
                 case "Oleje_desc":
-                    Bsort = Bsort.OrderByDescending(s => s.Oleje_I_Tluszcze);
+                    Bsort = Bsort.OrderByDescending(s => s.Tluszcze);
                     break;
                 case "Wapn":
                     Bsort = Bsort.OrderBy(s => s.Wapn);
@@ -100,7 +100,7 @@ namespace EndToEnd.Controllers
             return View(Bsort.ToPagedList(pageNumber, pageSize));
 
         }
-  
+
         // GET: Bydlo/Details/5
         public ActionResult Details(int? id)
         {
@@ -116,7 +116,7 @@ namespace EndToEnd.Controllers
             return View(bydloModels);
         }
 
-   
+
 
         // GET: Bydlo/Create
 
